@@ -1,0 +1,48 @@
+<div class="container">
+
+  <mat-card class="card">
+
+    <mat-card-header>
+      <mat-card-title>Registered Samples</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-actions class="actions">
+      <button mat-raised-button color="accent" class="action" (click)="onRefresh()">Refresh</button>
+    </mat-card-actions>
+
+    <mat-card-content class="content">
+
+      <mat-list-item *ngFor="let sample of samples$ | async">
+        <div matListItemLine>Welcome {{sample.firstname}} {{sample.lastname}}. You are ready for the BMW Group - Tech Talent Days</div>
+      </mat-list-item>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <h3>Request new Sample</h3>
+
+      <form [formGroup]="sampleForm" (ngSubmit)="onSubmit()">
+        <div class="content">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Firstname</mat-label>
+            <input matInput formControlName="firstname">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Lastname</mat-label>
+            <input matInput formControlName="lastname">
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="actions">
+        <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
